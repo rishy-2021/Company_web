@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
@@ -80,3 +81,15 @@ const addDepatment = () => {
 };
 
 export default addDepatment;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+}

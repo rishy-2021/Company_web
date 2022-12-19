@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { getSession } from "next-auth/react";
 
 const addCompany = () => {
   const [cName, setCName] = useState();
@@ -58,3 +59,15 @@ const addCompany = () => {
 };
 
 export default addCompany;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+}
