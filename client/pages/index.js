@@ -2,7 +2,7 @@ import { getSession, useSession } from "next-auth/react";
 import HomeComp from "../components/HomeComp";
 import Login from "../components/loginComp";
 
-export default function Home() {
+export default function Home({ user }) {
   const { data: session } = useSession();
   // console.log("session", session);
   return (
@@ -22,4 +22,10 @@ export async function getServerSideProps(context) {
       },
     };
   }
+
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

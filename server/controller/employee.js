@@ -14,6 +14,10 @@ module.exports.addemployee = async function addemployee(req, res) {
     });
     if (result) {
       await result.save();
+      return res.json({
+        message: "company added successfully",
+        data: result,
+      });
     } else {
       return res.json({
         message: "data not found",

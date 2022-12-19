@@ -2,16 +2,20 @@ const department = require("../models/departmentSchema");
 
 module.exports.adddepartment = async function adddepartment(req, res) {
   try {
-    const { name, id, comp_id } = req.body;
+    const { dep_id, name, comp_id } = req.body;
     // console.log("request coming", req.body);
 
     const result = new department({
       name: name,
-      id: id,
+      dep_id: dep_id,
       comp_id: comp_id,
     });
     if (result) {
       await result.save();
+      return res.json({
+        message: "department added successfully",
+        data: result,
+      });
     } else {
       return res.json({
         message: "data not found",

@@ -25,12 +25,16 @@ const department = () => {
       <div>
         {students &&
           students.map((student) => (
-            <ul key={student._id}>
-              <li> Name : {student?.name}</li>
-              <li> Address : {student?.address}</li>
-              <li> Experience :{student?.exp}</li>
-              <li> Salery : {student?.salery}</li>
-            </ul>
+            <div>
+              {" "}
+              <ul key={student._id}>
+                <li> Name : {student?.name}</li>
+                <li> Address : {student?.address}</li>
+                <li> Experience :{student?.exp}</li>
+                <li> Salery : {student?.salery}</li>
+              </ul>
+              <hr />
+            </div>
           ))}
       </div>
       <div>
@@ -61,4 +65,9 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

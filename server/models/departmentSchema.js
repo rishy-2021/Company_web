@@ -2,7 +2,7 @@ const moongoose = require("mongoose");
 
 const DepartSchema = new moongoose.Schema({
   name: String,
-  id: String,
+  dep_id: String,
   comp_id: String,
 });
 

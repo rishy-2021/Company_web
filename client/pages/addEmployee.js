@@ -20,7 +20,10 @@ const addStudents = () => {
         dep_id: dep_id,
         exp: exp,
       })
-      .then((res) => {});
+      .then((res) => {
+        alert("Employee Added Successfully");
+        window.location.reload();
+      });
   };
   return (
     <div
@@ -96,8 +99,46 @@ const addStudents = () => {
         onClick={addEmp}
       >
         {" "}
-        ADD Department
+        ADD Employee
       </button>
+
+      <div style={{ width: "30%", marginTop: "15px" }}>
+        <button
+          style={{
+            width: "44%",
+            padding: "12px 20px",
+            margin: "0 18px 0 5px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            backgroundColor: "lightgray",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Go to HOME
+        </button>
+        <button
+          style={{
+            width: "46%",
+            padding: "12px 20px",
+            marginLeft: "18px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            backgroundColor: "lightgray",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+          onClick={() => {
+            router.push("/viewCompany");
+          }}
+        >
+          {" "}
+          View Companies
+        </button>
+      </div>
     </div>
   );
 };
@@ -114,4 +155,9 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

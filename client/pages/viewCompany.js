@@ -20,46 +20,43 @@ const viewCompany = () => {
   return (
     <div>
       <h1>All Companies</h1>
+      <div>
+        {data &&
+          data.map((comp) => (
+            <div>
+              <table style={{ border: "2px solid black" }}>
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Registration No.</th>
+                  <th>Working Days</th>
+                </tr>
+                <tr>
+                  <td>{comp?.name}</td>
+                  <td>{comp?.address}</td>
+                  <td>{comp?.regNum}</td>
+                  <td>{comp?.workingDays}</td>
+                </tr>
+              </table>
 
-      {data &&
-        data.map((comp) => (
-          <div>
-            {/* <p>name : {comp?.name} </p>
-            <p>address : {comp?.address} </p>
-            <p>registration no. : {comp?.regNum}</p>
-            <p> working days : {comp?.workingDays}</p> */}
+              <DepartComp id={comp._id} />
 
-            <table style={{ border: "1px solid black" }}>
-              <tr style={{ padding: "40px", border: "1px solid black" }}>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Registration No.</th>
-                <th>Working Days</th>
-              </tr>
-              <tr style={{ border: "1px solid black" }}>
-                <td>{comp?.name}</td>
-                <td>{comp?.address}</td>
-                <td>{comp?.regNum}</td>
-                <td>{comp?.workingDays}</td>
-              </tr>
-            </table>
+              <Link
+                href={{
+                  pathname: "/addDepatment",
+                  query: {
+                    comp_id: comp?._id,
+                  },
+                }}
+                style={{}}
+              >
+                Add Department
+              </Link>
 
-            <DepartComp id={comp._id} />
-
-            <Link
-              href={{
-                pathname: "/addDepatment",
-                query: {
-                  comp_id: comp?._id,
-                },
-              }}
-            >
-              Add Department
-            </Link>
-
-            <hr />
-          </div>
-        ))}
+              <hr />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
@@ -76,4 +73,9 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

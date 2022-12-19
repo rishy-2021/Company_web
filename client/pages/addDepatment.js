@@ -16,12 +16,14 @@ const addDepatment = () => {
   const addDeprt = () => {
     axios
       .post("http://localhost:3001/cmp/department/adddepartment", {
-        id: id,
+        dep_id: id,
         name: name,
         comp_id: comp_id,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        alert("Company Added Successfully");
+        window.location.reload();
       });
   };
 
@@ -36,11 +38,12 @@ const addDepatment = () => {
       }}
     >
       <h1>Add Department</h1>
+
       <input
         type="text"
-        placeholder="Enter Department Id"
+        placeholder="Enter Department Name"
         onChange={(e) => {
-          setId(e.target.value);
+          setName(e.target.value);
         }}
         style={{
           width: "30%",
@@ -49,11 +52,12 @@ const addDepatment = () => {
           borderRadius: "10px",
         }}
       />
+
       <input
         type="text"
-        placeholder="Enter Department Name"
+        placeholder="Enter Department Id"
         onChange={(e) => {
-          setName(e.target.value);
+          setId(e.target.value);
         }}
         style={{
           width: "30%",
@@ -76,6 +80,44 @@ const addDepatment = () => {
         {" "}
         ADD Department
       </button>
+
+      <div style={{ width: "30%", marginTop: "15px" }}>
+        <button
+          style={{
+            width: "44%",
+            padding: "12px 20px",
+            margin: "0 18px 0 5px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            backgroundColor: "lightgray",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          Go to HOME
+        </button>
+        <button
+          style={{
+            width: "46%",
+            padding: "12px 20px",
+            marginLeft: "18px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            backgroundColor: "lightgray",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+          onClick={() => {
+            router.push("/viewCompany");
+          }}
+        >
+          {" "}
+          View Companies
+        </button>
+      </div>
     </div>
   );
 };
@@ -92,4 +134,9 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

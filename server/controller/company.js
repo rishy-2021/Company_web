@@ -13,6 +13,10 @@ module.exports.addCompany = async function addCompany(req, res) {
     });
     if (result) {
       await result.save();
+      return res.json({
+        message: "company added successfully",
+        data: result,
+      });
     } else {
       return res.json({
         message: "data not found",

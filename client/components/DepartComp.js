@@ -16,9 +16,9 @@ const DepartComp = ({ id }) => {
   }, []);
 
   return (
-    <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+    <div style={{ marginTop: "15px", marginBottom: "20px" }}>
       Departments -{" "}
-      <div style={{ marginTop: "10px", marginBottom: "10px" }}>
+      <div style={{ marginBottom: "15px", padding: "8px" }}>
         {dep &&
           dep.map((data) => (
             //   <li> {data?.name}</li>
@@ -29,7 +29,7 @@ const DepartComp = ({ id }) => {
                   dep_id: data?._id,
                 },
               }}
-              style={{ padding: "10px", textDecoration: "none" }}
+              style={{ padding: "15px", fontSize: "1.2rem" }}
             >
               {data?.name}
             </Link>
