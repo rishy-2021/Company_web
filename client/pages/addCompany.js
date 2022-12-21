@@ -103,15 +103,15 @@ const addCompany = () => {
         onClick={addComp}
       >
         {" "}
-        ADD To Database
+        Add Company
       </button>
 
-      <div style={{ width: "30%", marginTop: "15px" }}>
+      <div style={{ display: "flex", width: "30%", marginTop: "15px" }}>
         <button
           style={{
-            width: "44%",
+            width: "40%",
             padding: "12px 20px",
-            margin: "0 18px 0 5px",
+            marginLeft: "15px",
             borderRadius: "10px",
             cursor: "pointer",
             backgroundColor: "lightgray",
@@ -126,7 +126,7 @@ const addCompany = () => {
         </button>
         <button
           style={{
-            width: "46%",
+            width: "44%",
             padding: "12px 20px",
             marginLeft: "18px",
             borderRadius: "10px",

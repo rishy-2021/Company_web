@@ -15,7 +15,7 @@ const loginComp = () => {
       }}
     >
       <h1>SignUp</h1>
-      {/* <input
+      <input
         type="text"
         placeholder="Enter your Email"
         onChange={(e) => {
@@ -27,10 +27,10 @@ const loginComp = () => {
           margin: "8px 0",
           borderRadius: "10px",
         }}
-      /> */}
-      {/* <button
+      />
+      <button
         onClick={() => {
-          // signIn("email", { email: email });
+          signIn("email", { email: email });
         }}
         style={{
           width: "30%",
@@ -42,7 +42,7 @@ const loginComp = () => {
       >
         {" "}
         Email
-      </button> */}
+      </button>
 
       <button
         type="submit"
