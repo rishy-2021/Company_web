@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -120,7 +121,7 @@ const addStudents = () => {
         >
           Go to HOME
         </button>
-        <button
+        {/* <button
           style={{
             width: "46%",
             padding: "12px 20px",
@@ -137,7 +138,31 @@ const addStudents = () => {
         >
           {" "}
           View Companies
-        </button>
+        </button> */}
+
+        <Link
+          href={{
+            pathname: "/department",
+            query: {
+              dep_id: dep_id,
+            },
+          }}
+          style={{
+            width: "46%",
+            padding: "12px 28px",
+            marginLeft: "18px",
+            borderRadius: "10px",
+            cursor: "pointer",
+            backgroundColor: "lightgray",
+            fontSize: "1rem",
+            fontWeight: "600",
+            textDecoration: "none",
+            border: "2px solid black",
+            color: "black",
+          }}
+        >
+          View Employee
+        </Link>
       </div>
     </div>
   );
