@@ -8,6 +8,17 @@ const department = () => {
   const router = useRouter();
   const { dep_id } = router.query;
   const [students, setStudents] = useState();
+  const [count, setCount] = useState();
+
+  const deleteEmp = (id) => {
+    axios
+      .post(`http://localhost:3001/cmp/employee/deleteemployees`, {
+        id: id,
+      })
+      .then((res) => {
+        setCount(count + 1);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -17,22 +28,28 @@ const department = () => {
       .then((res) => {
         setStudents(res?.data?.data);
       });
-  }, []);
+  }, [count]);
+
+  console.log(students);
 
   return (
     <div>
       <h1>Employees</h1>
       <div>
         {students &&
-          students.map((student) => (
+          students.map((emp) => (
             <div>
               {" "}
-              <ul key={student._id}>
-                <li> Name : {student?.name}</li>
-                <li> Address : {student?.address}</li>
-                <li> Experience :{student?.exp}</li>
-                <li> Salery : {student?.salery}</li>
+              <ul key={emp._id}>
+                <li> Name : {emp?.name}</li>
+                <li> Address : {emp?.address}</li>
+                <li> Experience :{emp?.exp}</li>
+                <li> Salery : {emp?.salery}</li>
               </ul>
+              <button onClick={() => deleteEmp(emp._id)}>
+                {" "}
+                Delete Employee
+              </button>
               <hr />
             </div>
           ))}

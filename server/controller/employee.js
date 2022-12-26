@@ -51,3 +51,24 @@ module.exports.getemployees = async function getemployees(req, res) {
     });
   }
 };
+module.exports.deleteemployees = async function deleteemployees(req, res) {
+  try {
+    let result = await employee.findByIdAndDelete({ _id: req.body.id });
+    // console.log("res ", result);
+
+    if (result) {
+      return res.json({
+        message: " employee data get delete successfully",
+        data: result,
+      });
+    } else {
+      return res.json({
+        message: " employee data not found",
+      });
+    }
+  } catch (err) {
+    return res.json({
+      message: err.message,
+    });
+  }
+};
