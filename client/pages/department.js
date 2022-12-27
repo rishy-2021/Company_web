@@ -30,7 +30,7 @@ const department = () => {
       });
   }, [count]);
 
-  console.log(students);
+  // console.log(students);
 
   return (
     <div>

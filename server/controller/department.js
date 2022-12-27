@@ -50,3 +50,26 @@ module.exports.getdepartment = async function getdepartment(req, res) {
     });
   }
 };
+
+module.exports.deletedepartment = async function deletedepartment(req, res) {
+  try {
+    // console.log(req.body);
+    let result = await department.findByIdAndDelete({ _id: req.body.id });
+    // console.log("res ", result);
+
+    if (result) {
+      return res.json({
+        message: " department data get deleted successfully",
+        data: result,
+      });
+    } else {
+      return res.json({
+        message: " department data not found",
+      });
+    }
+  } catch (err) {
+    return res.json({
+      message: err.message,
+    });
+  }
+};

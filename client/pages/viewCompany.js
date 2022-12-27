@@ -13,7 +13,7 @@ const viewCompany = () => {
       setData(res?.data?.data);
     });
   }, []);
-  console.log(data);
+  // console.log(data);
 
   const router = useRouter();
 

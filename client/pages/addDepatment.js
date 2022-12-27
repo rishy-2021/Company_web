@@ -11,7 +11,7 @@ const addDepatment = () => {
   //   console.log(router);
 
   const { comp_id } = router.query;
-  console.log("id", comp_id);
+  // console.log("id", comp_id);
 
   const addDeprt = () => {
     axios
