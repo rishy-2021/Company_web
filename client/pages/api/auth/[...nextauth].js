@@ -12,12 +12,9 @@ import clientPromise from "./lib/mongoClient";
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId:
-        process.env.GOOGLE_CLIENT ||
-        "1063600602873-fcslqgb2t6iqut98a39qputii87u5lmp.apps.googleusercontent.com",
+      clientId: process.env.GOOGLE_CLIENT,
 
-      clientSecret:
-        process.env.GOOGLE_SECRET || "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",
+      clientSecret: process.env.GOOGLE_SECRET,
 
       authorization: {
         params: {
@@ -29,10 +26,8 @@ export default NextAuth({
     }),
 
     EmailProvider({
-      server:
-        process.env.EMAIL_SERVER ||
-        "smtp://rishypatel08@gmail.com:vyyaygwmzrblutij@smtp.gmail.com:587",
-      from: process.env.EMAIL || "rishypatel08@gmail.com",
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL,
 
       async sendVerificationRequest({
         identifier: email,
